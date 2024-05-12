@@ -57,7 +57,7 @@ const sendMessage = asyncHandler(async (req, res) => {
           ),
         ]);
       } catch (error) {
-        response = "User is unavailable. Please try again later.";
+        response = "User is unavailable";
       }
       return res
         .status(400)
