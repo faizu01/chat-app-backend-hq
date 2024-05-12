@@ -6,7 +6,7 @@ const router = Router();
 router.route("/register").post(registerUser);
 router.route("/login").post(loginUser);
 router.route("/logout").post(verifyJWT,logoutUser);
-router.route("/update-status").post(verifyJWT,updateStatus);
+router.route("/update-status").put(verifyJWT,updateStatus);
 //let say if you want to chat them
 router.route("/get-all-users").get(getAllUser)
 

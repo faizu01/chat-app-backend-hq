@@ -3,12 +3,12 @@ const chatSchema = new mongoose.Schema(
   {
     type: {
       type: String,
-      enum: ["Personal", "Group"],
+      enum: ["PERSONAL", "GROUP"],
       required: true,
     },
     chatName: {
       type: String,
-      default: "Personal",
+      default: "PERSONAL",
     },
     participant: [
       {

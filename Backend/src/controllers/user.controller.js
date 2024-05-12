@@ -84,6 +84,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 
 const updateStatus = asyncHandler(async (req, res) => {
   const { status } = req.body;
+  console.log(status);
   req.user.status = status;
   await req.user.save({ validateBeforeSave: false });
   return res
