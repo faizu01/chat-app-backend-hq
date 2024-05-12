@@ -10,25 +10,25 @@ const chatSchema = new mongoose.Schema(
       type: String,
       default: "Personal",
     },
-    recipient: [
+    participant: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
+        ref: "User",
       },
     ],
     lastMessage: {
-      type: mongoose.Schema.Type.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Message",
       default: null,
     },
-    admin: {
-      type: mongoose.Schema.Type.ObjectId,
-      ref: "user",
+    admin: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       default:null
-    },
+    }],
   },
   { timestamps: true }
 );
 
-const Chat = mongoose.Schema("Chat", chatSchema);
+const Chat = mongoose.model("Chat", chatSchema);
 export default Chat;

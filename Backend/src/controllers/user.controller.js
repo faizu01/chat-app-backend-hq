@@ -4,9 +4,9 @@ import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import { Option } from "../utils/constant.js";
 
-//TODO:Refresh Access Token if expired
+//TODO:Refresh Access Token if expired write a function for it
 const registerUser = asyncHandler(async (req, res) => {
-  const { fullName, email, password } =  req.body;
+  const { fullName, email, password } = req.body;
   //check if any field is empty throw error
   if ([fullName, email, password].some((fields) => fields.trim() === "")) {
     throw new ApiError(400, "All Fields are requried");
@@ -91,4 +91,22 @@ const updateStatus = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, `Status updated Successfully to ${status}`));
 });
 
-export { registerUser, loginUser, logoutUser, updateStatus };
+//TODO:remove loggedin user from result
+const getAllUser = asyncHandler(async (req, res) => {
+  const name = req?.query?.name;
+  console.log(name);
+  const listOfUser = await User.find({
+    fullName: {
+      $regex: new RegExp(name, "i"),
+    },
+  }).select("-password -refreshToken");
+
+  console.log(listOfUser);
+  if (!listOfUser) {
+    throw new ApiError(400, "User Not Found");
+  }
+  return res
+    .status(200)
+    .json(new ApiResponse(200, listOfUser, "User Found with search"));
+});
+export { registerUser, loginUser, logoutUser, updateStatus, getAllUser };
