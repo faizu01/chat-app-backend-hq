@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "8c01573f-3d62-4480-8103-fae693830544",
+		"name": "chatApplication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29097522"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\":\"Faizan Ansari\",\r\n    \"email\":\"faizan@gmail.com\",\r\n    \"password\":\"user@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/user/register",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"saifan@gmail.com\",\r\n    \"password\":\"user@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/user/login",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/user/logout",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-all-user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/user/get-all-users?name=ma",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"user",
+								"get-all-users"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "ma"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-status\"",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"Available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/user/update-status",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"user",
+								"update-status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chat",
+			"item": [
+				{
+					"name": "fetchAllChat",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server}}/chat/give_name",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"chat",
+								"give_name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-one-to-one-chat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/chat/one-to-one?userID=id-of-user-you-want-to-create-chat-with",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"chat",
+								"one-to-one"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "id-of-user-you-want-to-create-chat-with"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-grpup-chat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usersId\":[\r\n        \r\n            \"userid1\",\r\n            \"userid2\"\r\n          \r\n        \r\n\r\n    ],\r\n    \"chatName\":\"your chat name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/chat/group",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"chat",
+								"group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename Group",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\":\"66406e7a915f07a183b1e18e\",\r\n    \"newGroupName\":\"Khali Bhali 233\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/chat/group/rename",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"chat",
+								"group",
+								"rename"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-user-to-group",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\":\"66406e7a915f07a183b1e18e\",\r\n    \"newUsersId\":[\r\n        \"66403f421bddc24e276f2b27\",\r\n        \"663f504fa7e3ca5bc82599b9\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/chat/group/adduser",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"chat",
+								"group",
+								"adduser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove-user-from-group-chat",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\":[\r\n         \"6640707e5f59a13af78753cc\",\r\n         \"663f504fa7e3ca5bc82599b9\"\r\n        ],\r\n    \"chatId\":\"66406e7a915f07a183b1e18e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/chat/group/removeuser",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"chat",
+								"group",
+								"removeuser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Message",
+			"item": [
+				{
+					"name": "get-all-message-of-chat",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/message/give-chat-id",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"message",
+								"give-chat-id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send-message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\":\"your-chat-id\",\r\n    \"content\":\"This is a sample message 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/message/send-message",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"message",
+								"send-message"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

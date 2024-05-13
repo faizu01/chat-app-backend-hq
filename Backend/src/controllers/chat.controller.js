@@ -25,6 +25,7 @@ const checkIfChatExists = async (userId1, userId2) => {
 const createOneToOneChat = asyncHandler(async (req, res) => {
   try {
     const userID = req.query.userID;
+    console.log(userID);
     if (!userID) {
       throw new ApiError(400, "UserID parameter is missing");
     }
@@ -40,7 +41,7 @@ const createOneToOneChat = asyncHandler(async (req, res) => {
 
     // Chat does not exist, create a new chat
     const newChat = new Chat({
-      type: "Personal",
+      type: "PERSONAL",
       participant: [req.user._id, userID],
     });
 
@@ -62,7 +63,7 @@ const createOneToOneChat = asyncHandler(async (req, res) => {
 
 const createGroupChat = asyncHandler(async (req, res) => {
   try {
-    const listOfUserID = req?.body?.usersID; //assuming i will receive array of users containing user obj to create group with
+    const listOfUserID = req?.body?.usersId; //assuming i will receive array of users containing user obj to create group with
     const chatName = req?.body?.chatName;
 
     if (listOfUserID.length < 2) {
@@ -72,7 +73,7 @@ const createGroupChat = asyncHandler(async (req, res) => {
     const adminID = req.user._id;
     listOfUserID.unshift(adminID);
     const newGroupChat = await Chat.create({
-      type: "Group",
+      type: "GROUP",
       chatName: chatName,
       participant: listOfUserID,
       admin: adminID,

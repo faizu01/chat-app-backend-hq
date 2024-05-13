@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema(
     },
     avatar: {
       type: String,
+      default:"https://res-console.cloudinary.com/defgxc2iy/media_explorer_thumbnails/3fb81eabb1dd4f7b4ec41476f41d01da/detailed"
     },
     refreshToken: {
       type: String,

@@ -11,11 +11,4 @@ router.route("/group/adduser").put(verifyJWT,addUserToGroup)
 router.route("/group/removeuser").put(verifyJWT,removeUserFromGroup);
 
 
-
-
-
-
-
-
-
 export default router;

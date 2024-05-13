@@ -92,7 +92,7 @@ const updateStatus = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, `Status updated Successfully to ${status}`));
 });
 
-//TODO:remove loggedin user from result
+
 const getAllUser = asyncHandler(async (req, res) => {
   const name = req?.query?.name;
   console.log(name);
